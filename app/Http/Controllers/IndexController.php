@@ -6,245 +6,355 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
-use App\Jiangjinews;
+use App\Teaching;
+use App\News;
 
 class IndexController extends Controller
 {   
-	//匠几主页
+	//安吉拉主页
     public function index(){
     	$data = [];
-    	//首屏视频
-    	$screen_video = DB::table('screen_video')
-    		->where('video_screen','首屏')
-    		->pluck('video_path');
-    	$screen_video = $screen_video[0];
-        $data['screen_video'] = $screen_video;
-        //匠几服务
-        $service = DB::table('service_introduce')->orderBy('id','asc')->get();
-        $data['service'] = $service;
-        //匠几服务图
-        $info = DB::table('service_module')->orderBy('id','asc')->get();
-        $data['info'] = $info;
-        //底部+弹窗
-        $company_info = DB::table('company_info')->where('id',1)->get();
-        $data['company_info'] = $company_info;
-        //品牌案例
-        $jiangji_case = DB::table('jiangji_case')
-	        ->select(['id','case_title','cover_pic','case_index'])
-	        ->where('is_cover',1)
-	        ->limit(5)
-	        ->get();
-	    $data['jiangji_case'] = $jiangji_case;
-	    //匠几团队
-	    $jiangji_team = DB::table('jiangji_team')->orderBy('id','asc')->get();
-	    $i = '';
-	    foreach($jiangji_team as $key => $value){
-	    	$i = $value->id;
-	    	$jiangji_team_intro = DB::table('jiangji_team_intro')->where('staff_id',$i)->pluck('staff_intro');
-	    	$jiangji_team[$key]->jiangji_team_intro = $jiangji_team_intro;
-	    }
-	    $data['jiangji_team'] = $jiangji_team;
-	    //匠几动态
-	    $jiangji_news = DB::table('jiangji_news')
-	    	->select(['id','title','date_time','hot_pic','hot_desp'])
-	    	->where('is_hot',1)
-	    	->limit(5)
-	    	->get();
-	    $data['jiangji_news'] = $jiangji_news;
-	    //合作流程
-	    $jiangji_cooperation = DB::table('jiangji_cooperation')->get();
-	    $data['jiangji_cooperation'] = $jiangji_cooperation;
-        return view('qt_jiangji_index',$data);
-    }
-
-    //匠几文化
-    public function culture(){
-    	$data = [];
-    	//底部+弹窗
-    	$info = DB::table('service_module')->orderBy('id','asc')->get();
-        $data['info'] = $info;
-        $company_info = DB::table('company_info')->where('id',1)->get();
-        $data['company_info'] = $company_info;
         //banner
-    	$banner = DB::table('jiang_banner')->where('banner_sort','匠几文化')->get();
-    	$data['banner'] = $banner;
-    	//匠几文化
-    	$culture = DB::table('jiangji_culture')->orderBy('id','asc')->get();
-    	$data['culture'] = $culture;
-    	return view('qt_culture',$data);
-    }
-
-    //匠几服务
-    public function service(){
-    	$data = [];
-    	//底部+弹窗
-    	$info = DB::table('service_module')->orderBy('id','asc')->get();
-        $data['info'] = $info;
-        $company_info = DB::table('company_info')->where('id',1)->get();
-        $data['company_info'] = $company_info;    	
-        //banner
-    	$banner = DB::table('jiang_banner')->where('banner_sort','匠几服务')->get();
-    	$data['banner'] = $banner;
-    	//匠几服务
-    	$service = DB::table('jiangji_service')->orderBy('id','asc')->get();
-    	$i = '';
-    	foreach($service as $key => $value){
-	    	$i = $value->id;
-	    	$service_label = DB::table('jiangji_service_label')->where('service_id',$i)->pluck('label_name');
-	    	$service[$key]->service_label = $service_label;
-	    }
-    	$data['service'] = $service;
-    	return view('qt_service',$data);
-    }
-
-    //品牌案例
-    public function case(){
-    	$data = [];
-    	//底部+弹窗
-    	$info = DB::table('service_module')->orderBy('id','asc')->get();
-        $data['info'] = $info;
-        $company_info = DB::table('company_info')->where('id',1)->get();
-        $data['company_info'] = $company_info;
-        //banner
-    	$banner = DB::table('jiang_banner')->where('banner_sort','品牌案例')->get();
-    	$data['banner'] = $banner;
-    	//品牌案例
-        $hot_case = DB::table('jiangji_case')
-            ->select(['id','case_title','service_content','coord','case_pic1','case_pic2','case_pic3'])
-            ->where('is_hot',1)
-            ->limit(3)
-            ->orderBy('id','asc')
-            ->get();
-        $data['hot_case'] = $hot_case;
-        $case = DB::table('jiangji_case')
-            ->select(['id','case_title','service_content','coord','case_pic1'])
-            ->where('is_hot',0)
-            ->orderBy('id','asc')
-            ->get();
-        $data['case'] = $case;
-    	return view('qt_case',$data);
-    }
-
-    public function case_details($id){
-        $data = [];
-        //底部+弹窗
-        $info = DB::table('service_module')->orderBy('id','asc')->get();
-        $data['info'] = $info;
-        $company_info = DB::table('company_info')->where('id',1)->get();
-        $data['company_info'] = $company_info;
-        //banner
-        $banner = DB::table('jiang_banner')->where('banner_sort','品牌案例')->get();
+        $banner = DB::table('anjila_banner')->where('banner_sort','安吉拉首页')->get();
         $data['banner'] = $banner;
-        //品牌案例
-        $case = DB::table('jiangji_case')->where('id',$id)->get();
-        $case = $case[0];
-        $data['case'] = $case;
-        return view('qt_case_third',$data);
-    }
-
-    //配套采购
-    public function purchase(){
-    	$data = [];
-    	//底部+弹窗
-    	$info = DB::table('service_module')->orderBy('id','asc')->get();
-        $data['info'] = $info;
-        $company_info = DB::table('company_info')->where('id',1)->get();
-        $data['company_info'] = $company_info;
-        //banner
-    	$banner = DB::table('jiang_banner')->where('banner_sort','配套采购')->get();
-    	$data['banner'] = $banner;
-    	//配套采购
-    	$purchase = DB::table('jiangji_purchase')->orderBy('id','asc')->get();
-    	$data['purchase'] = $purchase;
-    	return view('qt_purchase',$data);
-    }
-
-    //匠几动态
-    public function news(){
-        $data = [];
-        //底部+弹窗
-        $info = DB::table('service_module')->orderBy('id','asc')->get();
-        $data['info'] = $info;
-        $company_info = DB::table('company_info')->where('id',1)->get();
-        $data['company_info'] = $company_info;
-        //banner
-        $banner = DB::table('jiang_banner')->where('banner_sort','匠几动态')->get();
-        $data['banner'] = $banner;
-        //匠几动态(全部动态)
-        $news = Jiangjinews::orderBy('date_time','desc')->paginate(5);
+        //安吉拉文化
+        $home_culture = DB::table('home_culture')->orderBy('id','asc')->get();
+        $data['home_culture'] = $home_culture;
+        //园所动态
+        $news = DB::table('anjila_news')->limit(3)->orderBy('date_time','desc')->get();
         $data['news'] = $news;
-        //行业分享
-        $news_hy = DB::table('jiangji_news')
-            ->where('category','行业分享')
-            ->orderBy('date_time','desc')
-            ->get();
-        $data['news_hy'] = $news_hy;
-        //匠几日志
-        $news_rz = DB::table('jiangji_news')
-            ->where('category','匠几日志')
-            ->orderBy('date_time','desc')
-            ->get();
-        $data['news_rz'] = $news_rz;
-        //品牌声浪
-        $news_pp = DB::table('jiangji_news')
-            ->where('category','品牌声浪')
-            ->orderBy('date_time','desc')
-            ->get();
-        $data['news_pp'] = $news_pp;
-        return view('qt_news',$data);
+        //首页底图
+        $home_last_pic = DB::table('home_last_pic')->get();
+        $data['home_last_pic'] = $home_last_pic;
+        //园所分部首推
+        $kindergarten_index = DB::table('kindergarten_index')
+                        ->limit(1)
+                        ->orderBy('id','asc')
+                        ->where('is_first',1)->get();
+        $data['kindergarten_index'] = $kindergarten_index;
+        //底部信息
+        $company_info = DB::table('company_info')->where('id',1)->get();
+        $data['company_info'] = $company_info;
+        return view('qt_anjila_index',$data);
     }
 
+    //安吉拉教学特色(亿童课程)
+    public function teaching_yt(){
+    	$data = [];
+        //banner
+        $banner = DB::table('anjila_banner')->where('banner_sort','教学特色')->get();
+        $data['banner'] = $banner;
+        //底部信息
+        $company_info = DB::table('company_info')->where('id',1)->get();
+        $data['company_info'] = $company_info;
+    	//安吉拉教学特色(亿童课程)
+        $teaching_yt = Teaching::where('course_sign','yt')->orderBy('id','asc')->paginate(4);
+        $data['teaching_yt'] = $teaching_yt;
+    	return view('qt_jiaoxuetese_yt_erji',$data);
+    }
+
+    //安吉拉教学特色(布朗课程)
+    public function teaching_bl(){
+        $data = [];
+        //banner
+        $banner = DB::table('anjila_banner')->where('banner_sort','教学特色')->get();
+        $data['banner'] = $banner;
+        //底部信息
+        $company_info = DB::table('company_info')->where('id',1)->get();
+        $data['company_info'] = $company_info;
+        //安吉拉教学特色(布朗课程)
+        $teaching_bl = Teaching::where('course_sign','bl')->orderBy('id','asc')->paginate(4);
+        $data['teaching_bl'] = $teaching_bl;
+        return view('qt_jiaoxuetese_bl_erji',$data);
+    }
+
+    //安吉拉教学特色(艺术创想)
+    public function teaching_ys(){
+        $data = [];
+        //banner
+        $banner = DB::table('anjila_banner')->where('banner_sort','教学特色')->get();
+        $data['banner'] = $banner;
+        //底部信息
+        $company_info = DB::table('company_info')->where('id',1)->get();
+        $data['company_info'] = $company_info;
+        //安吉拉教学特色(艺术创想)
+        $teaching_ys = Teaching::where('course_sign','ys')->orderBy('id','asc')->paginate(4);
+        $data['teaching_ys'] = $teaching_ys;
+        return view('qt_jiaoxuetese_ys_erji',$data);
+    }
+
+    //安吉拉教学特色(安吉拉早教)
+    public function teaching_zj(){
+        $data = [];
+        //banner
+        $banner = DB::table('anjila_banner')->where('banner_sort','教学特色')->get();
+        $data['banner'] = $banner;
+        //底部信息
+        $company_info = DB::table('company_info')->where('id',1)->get();
+        $data['company_info'] = $company_info;
+        //安吉拉教学特色(安吉拉早教)
+        $teaching_zj = Teaching::where('course_sign','zj')->orderBy('id','asc')->paginate(4);
+        $data['teaching_zj'] = $teaching_zj;
+        return view('qt_jiaoxuetese_zj_erji',$data);
+    }
+
+    //安吉拉教学特色详情
+    public function teaching_details($id){
+        $data = [];
+        //banner
+        $banner = DB::table('anjila_banner')->where('banner_sort','教学特色')->get();
+        $data['banner'] = $banner;
+        //底部信息
+        $company_info = DB::table('company_info')->where('id',1)->get();
+        $data['company_info'] = $company_info;
+        //主体
+        $teaching = DB::table('teaching_feature')->where('id',$id)->get();
+        $data['teaching'] = $teaching;
+        //标签
+        $label = DB::table('teaching_feature_label')->where('feature_id',$id)->orderBy('id','asc')->get();
+        $data['label'] = $label;
+        //标签详情
+        foreach($label as $k => $v){
+            $label_details = DB::table('teaching_feature_label_index')
+                                ->where('label_id',$v->id)
+                                ->orderBy('id','asc')
+                                ->get();
+            $label[$k]->details = $label_details;
+        }
+        $data['label_details'] = $label;
+        return view('qt_jiaoxuetese_sanji',$data);
+    }
+
+    //安吉拉文化
+    public function culture(){
+        $data = [];
+        //banner
+        $banner = DB::table('anjila_banner')->where('banner_sort','安吉拉文化')->get();
+        $data['banner'] = $banner;
+        //底部信息
+        $company_info = DB::table('company_info')->where('id',1)->get();
+        $data['company_info'] = $company_info;
+        //安吉拉教育理念
+        $concept = DB::table('education_concept')->get();
+        $data['concept'] = $concept;
+        //安吉拉文化
+        $culture = DB::table('culture_classify')->get();
+        $data['culture'] = $culture;
+        //安吉拉团队文本
+        $team_intro = DB::table('team_intro')->get();
+        $data['team_intro'] = $team_intro;
+        //安吉拉团队教师
+        $team_teacher = DB::table('team_teacher')->orderBy('id','asc')->get();
+        $b = count($team_teacher);
+        $arr = [];
+        $j = 0;
+        for($i=1;$i<=$b;$i++){
+            $a = array_shift($team_teacher);
+            $arr[$j][$i] = $a;
+            if(is_int($i/4)){
+                $j++;
+            }
+        }
+        $data['team_teacher'] = $arr;
+        //安吉拉说
+        $speak = DB::table('education_speak')->get();
+        $data['speak'] = $speak;
+        return view('qt_anjilawenhua_erji',$data);
+    }
+
+    //安吉拉文化详情
+    public function culture_details($id){
+        $data = [];
+        //banner
+        $banner = DB::table('anjila_banner')->where('banner_sort','安吉拉文化')->get();
+        $data['banner'] = $banner;
+        //底部信息
+        $company_info = DB::table('company_info')->where('id',1)->get();
+        $data['company_info'] = $company_info;
+        //主体
+        $culture = DB::table('culture_classify')->where('id',$id)->get();
+        $data['culture'] = $culture;
+        //标签
+        $label = DB::table('culture_label')->where('culture_id',$id)->orderBy('id','asc')->get();
+        $data['label'] = $label;
+        //标签详情
+        foreach($label as $k => $v){
+            $label_details = DB::table('culture_label_index')
+                                ->where('label_id',$v->id)
+                                ->orderBy('id','asc')
+                                ->get();
+            $label[$k]->details = $label_details;
+        }
+        $data['label_details'] = $label;
+        return view('qt_anjilawenhua_sanji',$data);
+    }
+
+    //园所动态二级(社会活动)
+    public function news_sh(){
+        $data = [];
+        //banner
+        $banner = DB::table('anjila_banner')->where('banner_sort','园所动态')->get();
+        $data['banner'] = $banner;
+        //底部信息
+        $company_info = DB::table('company_info')->where('id',1)->get();
+        $data['company_info'] = $company_info;
+        //园所动态二级(社会活动)
+        $news_sh = News::where('sort','社会活动')->orderBy('id','asc')->paginate(4);
+        $data['news_sh'] = $news_sh;
+        return view('qt_yuansuodongtai_sh_erji',$data);
+    }
+
+    // //园所动态二级(节日活动)
+    public function news_jr(){
+        $data = [];
+        //banner
+        $banner = DB::table('anjila_banner')->where('banner_sort','园所动态')->get();
+        $data['banner'] = $banner;
+        //底部信息
+        $company_info = DB::table('company_info')->where('id',1)->get();
+        $data['company_info'] = $company_info;
+        //园所动态二级(节日活动)
+        $news_jr = News::where('sort','节日活动')->orderBy('id','asc')->paginate(4);
+        $data['news_jr'] = $news_jr;
+        return view('qt_yuansuodongtai_jr_erji',$data);
+    }
+
+    //园所动态二级(班级活动)
+    public function news_bj(){
+        $data = [];
+        //banner
+        $banner = DB::table('anjila_banner')->where('banner_sort','园所动态')->get();
+        $data['banner'] = $banner;
+        //底部信息
+        $company_info = DB::table('company_info')->where('id',1)->get();
+        $data['company_info'] = $company_info;
+        //园所动态二级(班级活动)
+        $news_bj = News::where('sort','班级活动')->orderBy('id','asc')->paginate(4);
+        $data['news_bj'] = $news_bj;
+        return view('qt_yuansuodongtai_bj_erji',$data);
+    }
+
+    //园所动态二级(父母沙龙)
+    public function news_fm(){
+        $data = [];
+        //banner
+        $banner = DB::table('anjila_banner')->where('banner_sort','园所动态')->get();
+        $data['banner'] = $banner;
+        //底部信息
+        $company_info = DB::table('company_info')->where('id',1)->get();
+        $data['company_info'] = $company_info;
+        //园所动态二级(父母沙龙)
+        $news_fm = News::where('sort','父母沙龙')->orderBy('id','asc')->paginate(4);
+        $data['news_fm'] = $news_fm;
+        return view('qt_yuansuodongtai_fm_erji',$data);
+    }
+
+    //安吉拉教学特色三级
     public function news_details($id){
         $data = [];
-        //底部+弹窗
-        $info = DB::table('service_module')->orderBy('id','asc')->get();
-        $data['info'] = $info;
-        $company_info = DB::table('company_info')->where('id',1)->get();
-        $data['company_info'] = $company_info;
         //banner
-        $banner = DB::table('jiang_banner')->where('banner_sort','匠几动态')->get();
+        $banner = DB::table('anjila_banner')->where('banner_sort','园所动态')->get();
         $data['banner'] = $banner;
-        //匠几动态
-        $news = DB::table('jiangji_news')->where('id',$id)->get();
-        $data['news'] = $news;
-        $template_no = DB::table('jiangji_news')->where('id',$id)->pluck('template_no');
-        $template_no = $template_no[0];
-        if($template_no == 1){
-            $news_details = DB::table('jiangji_news_template1')
-                ->orderBy('id','asc')->where('news_id',$id)->get();
-            $data['news_details'] = (array)$news_details;
-            return view('qt_news_details_first',$data);
-        }else if($template_no == 2){
-            $news_details = DB::table('jiangji_news_template2')
-                ->orderBy('id','asc')->where('news_id',$id)->get();
-            $data['news_details'] = (array)$news_details;
-            return view('qt_news_details_second',$data);
-        }else if($template_no == 3){
-            $news_details = DB::table('jiangji_news_template3')
-                ->orderBy('id','asc')->where('news_id',$id)->get();
-            $data['news_details'] = (array)$news_details;
-            return view('qt_news_details_third',$data);
-        }
-    }
-
-    //联系匠几
-    public function contact(){
-    	$data = [];
-    	//底部+弹窗
-    	$info = DB::table('service_module')->orderBy('id','asc')->get();
-        $data['info'] = $info;
+        //底部信息
         $company_info = DB::table('company_info')->where('id',1)->get();
         $data['company_info'] = $company_info;
-        //banner
-    	$banner = DB::table('jiang_banner')->where('banner_sort','联系匠几')->get();
-    	$data['banner'] = $banner;
-    	//联系匠几
-    	$contact = DB::table('jiangji_relation')->get();
-    	$data['contact'] = $contact;
-    	return view('qt_lianxijiangji',$data);
+        //主体
+        $news = DB::table('anjila_news')->where('id',$id)->get();
+        $data['news'] = $news;
+        //详情
+        $details = DB::table('anjila_news_details')->where('news_id',$id)->orderBy('id','asc')->get();
+        $data['details'] = $details;
+        return view('qt_yuansuodongtai_sanji',$data);
     }
-    
- 
 
+    //常青藤课程
+    public function curriculum(){
+        $data = [];
+        //banner
+        $banner = DB::table('anjila_banner')->where('banner_sort','常青藤课程')->get();
+        $data['banner'] = $banner;
+        //底部信息
+        $company_info = DB::table('company_info')->where('id',1)->get();
+        $data['company_info'] = $company_info;
+        //主体
+        $curriculum1 = DB::table('curriculum_idea')->get();
+        $data['curriculum1'] = $curriculum1;
+        $curriculum2 = DB::table('curriculum_paragraph')->get();
+        $data['curriculum2'] = $curriculum2;
+        $curriculum3 = DB::table('consultative_course_text')->get();
+        $data['curriculum3'] = $curriculum3;
+        $curriculum4 = DB::table('consultative_course_paragraph')->get();
+        $data['curriculum4'] = $curriculum4;
+        $curriculum5 = DB::table('consultative_course_carousel')->get();
+        $b = count($curriculum5);
+        $arr = [];
+        $j = 0;
+        for($i=1;$i<=$b;$i++){
+            $a = array_shift($curriculum5);
+            $arr[$j][$i] = $a;
+            if(is_int($i/3)){
+                $j++;
+            }
+        }
+        $data['curriculum5'] = $arr;
+        return view('qt_changqingtengkecheng',$data);
+    }
+    //关于我们
+    public function about(){
+        $data = [];
+        //底部信息
+        $company_info = DB::table('company_info')->where('id',1)->get();
+        $data['company_info'] = $company_info;
+        //主体
+        $about = DB::table('about_anjila')->get();
+        $data['about'] = $about;
+        $about_pic = DB::table('about_anjila_pic')->get();
+        $data['about_pic'] = $about_pic;
+        $history = DB::table('development_history_text')->get();
+        $data['history'] = $history;
+        $time = DB::table('development_timer_shaft')->get();
+        $data['time'] = $time;
+        $team_text = DB::table('manage_team_text')->get();
+        $data['team_text'] = $team_text;
+        $anjila_team = DB::table('anjila_team')->get();
+        $data['anjila_team'] = $anjila_team;
+        $kindergarten = DB::table('kindergarten_index')->orderBy('id','asc')->get();
+        $b = count($kindergarten);
+        $arr = [];
+        $j = 0;
+        for($i=1;$i<=$b;$i++){
+            $a = array_shift($kindergarten);
+            $arr[$j][$i] = $a;
+            if(is_int($i/4)){
+                $j++;
+            }
+        }
+        $data['kindergarten'] = $arr;
+        return view('qt_guanyuwomen',$data);
+    }
+
+    //园所分部详情
+    public function about_details($id){
+        $data = [];
+        //底部信息
+        $company_info = DB::table('company_info')->where('id',1)->get();
+        $data['company_info'] = $company_info;
+        //主体
+        $kindergarten = DB::table('kindergarten_index')->where('id',$id)->get();
+        $data['kindergarten'] = $kindergarten;
+        //标签
+        $label = DB::table('kindergarten_label')->where('kinder_id',$id)->orderBy('id','asc')->get();
+        $data['label'] = $label;
+        //标签详情
+        foreach($label as $k => $v){
+            $label_details = DB::table('kindergarten_label_index')
+                                ->where('label_id',$v->id)
+                                ->orderBy('id','asc')
+                                ->get();
+            $label[$k]->details = $label_details;
+        }
+        $data['label_details'] = $label;
+        return view('qt_guanyuwomen_sanji',$data);
+    }
 
 }

@@ -12,7 +12,7 @@
 
 	<meta charset="utf-8" />
 
-	<title>匠几信息设置</title>
+	<title>安吉拉信息设置</title>
 
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
@@ -88,7 +88,7 @@
 
 						<h3 class="page-title">
 
-							第二屏信息管理
+							安吉拉信息管理
 
 							 <small>信息设置</small>
 
@@ -100,15 +100,7 @@
 
 								<i class="icon-home"></i>
 
-								<a href="/second/second_screen">第二屏信息管理</a> 
-
-								<span class="icon-angle-right"></span>
-
-							</li>
-
-							<li>
-
-								<a href="/second/second_screen">第二屏信息</a>
+								<a href="/info/info_index">安吉拉信息管理</a> 
 
 								<span class="icon-angle-right"></span>
 
@@ -180,27 +172,13 @@
 
 												<div class="control-group">
 
-													<label class="control-label">公司名称</label>
-
-													<div class="controls">
-
-														<input type="text" name="company_name" value="{{$company_info['company_name']}}" class="m-wrap huge" />
-
-														<span class="help-inline">请输入新公司名称</span>
-
-													</div>
-
-												</div>
-
-												<div class="control-group">
-
-													<label class="control-label">公司地址</label>
+													<label class="control-label">安吉拉地址</label>
 
 													<div class="controls">
 
 														<input type="text" name="company_address" value="{{$company_info['company_address']}}" class="m-wrap huge" />
 
-														<span class="help-inline">请输入新公司地址</span>
+														<span class="help-inline">请输入安吉拉地址</span>
 
 													</div>
 
@@ -208,27 +186,13 @@
 
 												<div class="control-group">
 
-													<label class="control-label">公司邮箱</label>
-
-													<div class="controls">
-
-														<input type="text" name="company_email" value="{{$company_info['company_email']}}" class="m-wrap huge" />
-
-														<span class="help-inline">请输入新公司邮箱</span>
-
-													</div>
-
-												</div>
-
-												<div class="control-group">
-
-													<label class="control-label">公司电话</label>
+													<label class="control-label">安吉拉电话</label>
 
 													<div class="controls">
 
 														<input type="text" name="company_tel" value="{{$company_info['company_tel']}}" class="m-wrap huge" />
 
-														<span class="help-inline">请输入新公司电话</span>
+														<span class="help-inline">请输入安吉拉电话</span>
 
 													</div>
 
@@ -236,13 +200,13 @@
 
 												<div class="control-group">
 
-													<label class="control-label">公司微博</label>
+													<label class="control-label">网站备案号</label>
 
 													<div class="controls">
 
-														<input type="text" name="company_weibo" value="{{$company_info['company_weibo']}}" class="m-wrap huge" />
+														<input type="text" name="archival_info" value="{{$company_info['archival_info']}}" class="m-wrap huge" />
 
-														<span class="help-inline">请输入新公司微博</span>
+														<span class="help-inline">请输入网站备案号</span>
 
 													</div>
 
@@ -250,54 +214,13 @@
 
 												<div class="control-group">
 
-													<label class="control-label">二维码图路径</label>
+													<label class="control-label">二维码路径</label>
 
 													<div class="controls">
 
 														<input type="text" name="qr_code" value="{{$company_info['qr_code']}}" class="m-wrap huge" />
 
-														<span class="help-inline">请输入新二维码图路径</span>
-
-													</div>
-
-												</div>
-
-												<div class="control-group">
-
-													<label class="control-label">PC端弹窗信息图路径</label>
-
-													<div class="controls">
-
-														<input type="text" name="alert_info" value="{{$company_info['alert_info']}}" class="m-wrap huge" />
-
-														<span class="help-inline">请输入PC端新弹窗信息图路径</span>
-
-													</div>
-
-												</div>
-
-												<div class="control-group">
-
-													<label class="control-label">移动端弹窗信息图路径</label>
-
-													<div class="controls">
-
-														<input type="text" name="alert_info_mobile" value="{{$company_info['alert_info_mobile']}}" class="m-wrap huge" />
-
-														<span class="help-inline">请输入移动端新弹窗信息图路径</span>
-
-													</div>
-
-												</div>
-												<div class="control-group">
-
-													<label class="control-label">版权信息</label>
-
-													<div class="controls">
-
-														<input type="text" name="copyright_notice" value="{{$company_info['copyright_notice']}}" class="m-wrap huge" />
-
-														<span class="help-inline">请输入版权信息</span>
+														<span class="help-inline">请输入二维码路径</span>
 
 													</div>
 

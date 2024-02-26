@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {   
-
     //登录
     public function login(){
     	return view('login');
@@ -276,7 +275,7 @@ class AdminController extends Controller
         }
         return view('admin_role_insert');
     }
-
+    
     //do管理员角色新增
     public function do_admin_role_insert(){
         $role_sign = $_POST['sign'];
@@ -305,7 +304,7 @@ class AdminController extends Controller
         }else{
             return new JsonResponse(
                     array('msg' => 'no')
-                );
+                );  
         }
     }
 
@@ -484,7 +483,7 @@ class AdminController extends Controller
                 //上传成功
                 if($bool){
                     //获取图片描述
-                    $describe = $_POST['describe'];
+                    $describe = $_POST['describe']; 
                     //创建时间
                     $time = date('Y-m-d H:i:s');
                     //文件路径
@@ -538,8 +537,6 @@ class AdminController extends Controller
         $picture = DB::table('cdn_image')->where('id',$pic_id)->get();
         $data['picture'] = (array)$picture[0];
         return view('admin_pic_upload_update',$data);
-
-
     }
 
     //doCDN图片编辑

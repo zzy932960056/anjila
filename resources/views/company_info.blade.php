@@ -12,7 +12,7 @@
 
 	<meta charset="utf-8" />
 
-	<title>匠几信息设置</title>
+	<title>安吉拉信息设置</title>
 
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
@@ -89,7 +89,7 @@
 
 						<h3 class="page-title">
 
-							公司信息管理 <small>公司信息</small>
+							安吉拉信息管理 <small>安吉拉信息</small>
 
 						</h3>
 
@@ -99,7 +99,7 @@
 
 								<i class="icon-home"></i>
 
-								<a href="/second/second_screen">公司信息管理</a> 
+								<a href="/info/info_index">安吉拉信息管理</a> 
 
 								<i class="icon-angle-right"></i>
 
@@ -107,7 +107,7 @@
 
 							<li>
 
-								<a href="#">公司信息</a>
+								<a href="#">安吉拉信息</a>
 
 								<i class="icon-angle-right"></i>
 
@@ -168,27 +168,15 @@
 
 											<th>信息ID</th>
 
-											<th>公司名称</th>
+											<th>安吉拉地址</th>
 
-											<th>公司地址</th>
+											<th>安吉拉电话</th>
 
-											<th>公司邮箱</th>
+											<th>网站备案号</th>
 
-											<th>公司电话</th>
-
-											<th>公司微博</th>
+											<th>安吉拉二维码</th>
 
 											<th>二维码图片路径</th>
-
-											<th>二维码</th>
-
-											<th>弹窗信息图片路径</th>
-
-											<th>PC端弹窗信息图</th>
-
-											<th>移动端弹窗信息图</th>
-
-											<th>版权信息</th>
 
 											<th>编辑</th>
 
@@ -202,27 +190,15 @@
 
 											<td>{{$in->id}}</td>
 
-											<td>{{$in->company_name}}</td>
-
 											<td>{{$in->company_address}}</td>
-
-											<td>{{$in->company_email}}</td>
 
 											<td>{{$in->company_tel}}</td>
 
-											<td>{{$in->company_weibo}}</td>
-
-											<td>{{$in->qr_code}}</td>
+											<td>{{$in->archival_info}}</td>
 
 											<td><img src="{{$in->qr_code}}" width="256"/></td>
 
-											<td>{{$in->alert_info}}</td>
-
-											<td><img src="{{$in->alert_info}}" width="1024"/></td>
-
-											<td><img src="{{$in->alert_info_mobile}}" width="1024"/></td>
-
-											<td>{{$in->copyright_notice}}</td>
+											<td>{{$in->qr_code}}</td>
 
 											<td><a href="/info/info_index/update/{{$in->id}}">编辑</a></td>
 

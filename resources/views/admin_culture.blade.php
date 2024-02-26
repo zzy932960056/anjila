@@ -12,7 +12,7 @@
 
 	<meta charset="utf-8" />
 
-	<title>匠几文化设置</title>
+	<title>安吉拉文化</title>
 
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
@@ -89,7 +89,7 @@
 
 						<h3 class="page-title">
 
-							匠几文化管理 <small>匠几文化信息</small>
+							安吉拉文化管理 <small>安吉拉文化</small>
 
 						</h3>
 
@@ -99,7 +99,7 @@
 
 								<i class="icon-home"></i>
 
-								<a href="/admin/culture">匠几文化</a> 
+								<a href="/admin/culture">安吉拉文化管理</a> 
 
 								<i class="icon-angle-right"></i>
 
@@ -107,7 +107,7 @@
 
 							<li>
 
-								<a href="#">匠几文化信息</a>
+								<a href="#">安吉拉文化</a>
 
 								<i class="icon-angle-right"></i>
 
@@ -135,7 +135,7 @@
 
 							<div class="portlet-title">
 
-								<div class="caption"><i class="icon-edit"></i>匠几文化信息列表</div>
+								<div class="caption"><i class="icon-edit"></i>安吉拉文化</div>
 
 								<div class="tools">
 
@@ -166,11 +166,19 @@
 
 										<tr>
 
-											<th>匠几文化信息ID</th>
+											<th>文化ID</th>
 
-											<th>匠几文化信息图片路径</th>
+											<th>文化中文名</th>
 
-											<th>匠几文化信息图片</th>
+											<th>文化英文名</th>
+
+											<th>文化封面图路径</th>
+
+											<th>文化封面图</th>
+
+											<th>文化简介</th>
+
+											<th>课程详情</th>
 
 											<th>编辑</th>
 
@@ -179,16 +187,24 @@
 									</thead>
 
 									<tbody>
-										@foreach($info as $in)
+										@foreach($culture as $cu)
 										<tr class="">
 
-											<td>{{$in->id}}</td>
+											<td>{{$cu->id}}</td>
 
-											<td>{{$in->culture_img}}</td>
+											<td>{{$cu->culture_name_c}}</td>
 
-											<td><img src="{{$in->culture_img}}"/></td>
+											<td>{{$cu->culture_name_e}}</td>
 
-											<td><a href="/admin/culture/update/{{$in->id}}">编辑</a></td>
+											<td>{{$cu->culture_cover}}</td>
+
+											<td><img src="{{$cu->culture_cover}}" width="255"/></td>
+
+											<td>{{$cu->culture_intro}}</td>
+
+											<td><a href="/admin/culture/label/{{$cu->id}}">课程详情</a></td>
+
+											<td><a href="/admin/culture/update/{{$cu->id}}">编辑</a></td>
 
 										</tr>
 										@endforeach

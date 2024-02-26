@@ -33,53 +33,28 @@ class InfoController extends Controller
     }
 
     public function info_index_doUpdate($id){
-          $company_name = $_POST['company_name'];
-          $company_address = $_POST['company_address'];
-          $company_email = $_POST['company_email'];
-          $company_tel = $_POST['company_tel'];
-          $company_weibo = $_POST['company_weibo'];
-          $qr_code = $_POST['qr_code'];
-          $alert_info = $_POST['alert_info'];
-          $alert_info_mobile = $_POST['alert_info_mobile'];
-          $copyright_notice = $_POST['copyright_notice'];
-    	if($company_name == ''){
-            echo "<script>alert('公司名称不能为空')</script>";
-            return self::info_index_update($id);
-        }else if($company_address == ''){
-            echo "<script>alert('公司地址不能为空')</script>";
-            return self::info_index_update($id);
-        }else if($company_email == ''){
-            echo "<script>alert('公司邮箱不能为空')</script>";
+        $company_address = $_POST['company_address'];
+        $company_tel = $_POST['company_tel'];
+        $archival_info = $_POST['archival_info'];
+        $qr_code = $_POST['qr_code'];
+    	if($company_address == ''){
+            echo "<script>alert('安吉拉地址不能为空')</script>";
             return self::info_index_update($id);
         }else if($company_tel == ''){
-            echo "<script>alert('公司电话不能为空')</script>";
+            echo "<script>alert('安吉拉电话不能为空')</script>";
             return self::info_index_update($id);
-        }else if($company_weibo == ''){
-            echo "<script>alert('公司微博不能为空')</script>";
+        }else if($archival_info == ''){
+            echo "<script>alert('网站备案号不能为空')</script>";
             return self::info_index_update($id);
         }else if($qr_code == ''){
             echo "<script>alert('二维码路径不能为空')</script>";
             return self::info_index_update($id);
-        }else if($alert_info == ''){
-            echo "<script>alert('PC端弹窗信息图路径不能为空')</script>";
-            return self::info_index_update($id);
-        }else if($alert_info_mobile == ''){
-            echo "<script>alert('移动端弹窗信息图路径不能为空')</script>";
-            return self::info_index_update($id);
-        }else if($copyright_notice == ''){
-            echo "<script>alert('版权信息不能为空')</script>";
-            return self::info_index_update($id);
         }
         $num = DB::table('company_info')->where('id',$id)->update(
-                ['company_name'=>$company_name,
-                'company_address'=>$company_address,
-                'company_email'=>$company_email,
+                ['company_address'=>$company_address,
                 'company_tel'=>$company_tel,
-                'company_weibo'=>$company_weibo,
-                'qr_code'=>$qr_code,
-                'alert_info'=>$alert_info,
-                'alert_info_mobile'=>$alert_info_mobile,
-                'copyright_notice'=>$copyright_notice]
+                'archival_info'=>$archival_info,
+                'qr_code'=>$qr_code]
             );
         if($num == 1){
             echo "<script>alert('信息修改成功')</script>";

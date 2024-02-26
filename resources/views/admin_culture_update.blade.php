@@ -12,7 +12,7 @@
 
 	<meta charset="utf-8" />
 
-	<title>匠几文化信息设置</title>
+	<title>安吉拉文化</title>
 
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
@@ -88,9 +88,9 @@
 
 						<h3 class="page-title">
 
-							匠几文化信息管理
+							安吉拉文化管理
 
-							 <small>匠几文化设置</small>
+							 <small>安吉拉文化</small>
 
 						</h3>
 
@@ -100,21 +100,15 @@
 
 								<i class="icon-home"></i>
 
-								<a href="/admin/culture">匠几文化信息管理</a> 
+								<a href="/admin/cultsure">安吉拉文化管理</a> 
 
 								<span class="icon-angle-right"></span>
 
 							</li>
 
-							<li>
-
-								<a href="/admin/culture">匠几文化信息</a>
-
-								<span class="icon-angle-right"></span>
-
 							</li>
 
-							<li><a href="#">匠几文化设置</a></li>
+							<li><a href="#">安吉拉文化</a></li>
 
 						</ul>
 
@@ -140,7 +134,7 @@
 
 									<i class="icon-reorder"></i>
 
-									<span class="hidden-480">匠几文化设置</span>
+									<span class="hidden-480">安吉拉文化</span>
 
 								</div>
 
@@ -152,7 +146,7 @@
 
 									<ul class="nav nav-tabs">
 
-										<li class="active"><a href="#portlet_tab1" data-toggle="tab">匠几文化设置</a></li>
+										<li class="active"><a href="#portlet_tab1" data-toggle="tab">安吉拉文化设置</a></li>
 
 									</ul>
 
@@ -162,17 +156,15 @@
 
 											<!-- BEGIN FORM-->
 
-											<form action="/admin/culture/doupdate/{{$jiangji_culture['id']}}" class="form-horizontal" method="post">
-												
+											<form action="/admin/culture/doupdate/{{$culture['id']}}" class="form-horizontal" method="post">
+
 												<div class="control-group">
 
-													<label class="control-label">匠几文化信息id</label>
+													<label class="control-label">文化id</label>
 
 													<div class="controls">   
 
-														<input class="m-wrap medium" name="tid" type="text" value="{{$jiangji_culture['id']}}" disabled/>
-
-														<span class="help-inline">匠几文化信息id</span>
+														<input class="m-wrap medium" name="mid" type="text" value="{{$culture['id']}}" readonly/>
 
 													</div>
 
@@ -180,13 +172,55 @@
 
 												<div class="control-group">
 
-													<label class="control-label">文化信息图片路径</label>
+													<label class="control-label">文化中文名</label>
 
 													<div class="controls">
 
-														<input type="text" name="culture_img" value="{{$jiangji_culture['culture_img']}}" class="m-wrap large" />
+														<input type="text" name="culture_name_c" value="{{$culture['culture_name_c']}}" class="m-wrap huge" />
 
-														<span class="help-inline">请输入新路径</span>
+														<span class="help-inline">请输入文化中文名(必填)</span>
+
+													</div>
+
+												</div>
+
+												<div class="control-group">
+
+													<label class="control-label">文化英文名</label>
+
+													<div class="controls">
+
+														<input type="text" name="culture_name_e" value="{{$culture['culture_name_e']}}" class="m-wrap huge" />
+
+														<span class="help-inline">请输入文化英文名(选填)</span>
+
+													</div>
+
+												</div>
+
+												<div class="control-group">
+
+													<label class="control-label">封面图路径</label>
+
+													<div class="controls">
+
+														<input type="text" name="culture_cover" value="{{$culture['culture_cover']}}" class="m-wrap huge" />
+
+														<span class="help-inline">请输入封面图路径</span>
+
+													</div>
+
+												</div>
+
+												<div class="control-group">
+
+													<label class="control-label">文化简介</label>
+
+													<div class="controls">
+
+														<input type="text" name="culture_intro" value="{{$culture['culture_intro']}}" class="m-wrap huge" />
+
+														<span class="help-inline">请输入文化简介</span>
 
 													</div>
 

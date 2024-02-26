@@ -14,7 +14,7 @@
 
 				<a class="brand" href="/admin/adminindex">
 
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp匠几网站后台
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp安吉拉网站后台
 
 				</a>
 

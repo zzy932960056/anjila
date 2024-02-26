@@ -12,7 +12,7 @@
 
 	<meta charset="utf-8" />
 
-	<title>匠几后台管理登录</title>
+	<title>安吉拉后台管理登录</title>
 
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
@@ -72,7 +72,7 @@
 
 		<form action="/admin/dologin" method="post" >
 
-			<h3 class="form-title">匠几后台管理</h3>
+			<h3 class="form-title">安吉拉后台管理</h3>
 
 			<div class="alert alert-error hide">
 
@@ -146,7 +146,7 @@
 
 	<div class="copyright">
 
-		2017 &copy; 匠几后台管理登录界面
+		2017 &copy; 安吉拉后台管理登录界面
 
 	</div>
 

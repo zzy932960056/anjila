@@ -149,25 +149,9 @@
 
 						<li >
 
-							<a href="/operation/screen_video">
-
-							首屏视频管理</a>
-
-						</li>
-
-						<li >
-
 							<a href="/banner/banner_pic">
 
-							pc端banner图</a>
-
-						</li>
-
-						<li >
-
-							<a href="/banner/banner_mobile_pic">
-
-							移动端banner图</a>
+							banner图管理</a>
 
 						</li>
 
@@ -175,23 +159,7 @@
 
 							<a href="/info/info_index">
 
-							公司信息维护</a>
-
-						</li>
-
-						<li >
-
-							<a href="/admin/relation">
-
-							PC端联系匠几大图</a>
-
-						</li>
-
-						<li >
-
-							<a href="/admin/relation_mobile">
-
-							移动端联系匠几大图</a>
+							网站信息维护</a>
 
 						</li>
 
@@ -205,7 +173,7 @@
 
 					<i class="icon-briefcase"></i> 
 
-					<span class="title">匠几</span>
+					<span class="title">安吉拉首页</span>
 
 					<span class="arrow "></span>
 
@@ -215,71 +183,21 @@
 
 						<li >
 
-							<a href="/admin/jiangji">
+							<a href="/home/culture_cover">
 
 							<i class="icon-cogs"></i>
 
-							PC端匠几服务简介</a>
+							安吉拉文化封面图</a>
 
 						</li>
 
 						<li >
 
-							<a href="/admin/mobile_jiangji">
+							<a href="/home/last_pic">
 
 							<i class="icon-cogs"></i>
 
-							移动端匠几服务简介</a>
-
-						</li>
-
-						<li >
-
-							<a href="/admin/jiangji/module">
-
-							<i class="icon-cogs"></i>
-
-							PC端匠几服务图文</a>
-
-						</li>
-
-						<li >
-
-							<a href="/admin/jiangji_mobile/module">
-
-							<i class="icon-cogs"></i>
-
-							移动端匠几服务图文</a>
-
-						</li>
-
-						<li >
-
-							<a href="/admin/team">
-
-							<i class="icon-cogs"></i>
-
-							匠几团队</a>
-
-						</li>
-
-						<li >
-
-							<a href="/admin/jiangji/cooperation">
-
-							<i class="icon-cogs"></i>
-
-							PC端合作流程</a>
-
-						</li>
-
-						<li >
-
-							<a href="/admin/jiangji_mobile/cooperation">
-
-							<i class="icon-cogs"></i>
-
-							移动端合作流程</a>
+							首页底图</a>
 
 						</li>
 
@@ -293,13 +211,81 @@
 
 					<i class="icon-briefcase"></i> 
 
-					<span class="title">匠几文化</span>
+					<span class="title">教学特色</span>
 
 					<span class="arrow "></span>
 
 					</a>
 
 					<ul class="sub-menu">
+
+						<li >
+
+							<a href="/admin/teaching_yt">
+
+							<i class="icon-cogs"></i>
+
+							亿童课程</a>
+
+						</li>
+
+						<li >
+
+							<a href="/admin/teaching_bl">
+
+							<i class="icon-cogs"></i>
+
+							布朗课程</a>
+
+						</li>
+
+						<li >
+
+							<a href="/admin/teaching_ys">
+
+							<i class="icon-cogs"></i>
+
+							艺术创想</a>
+
+						</li>
+
+						<li >
+
+							<a href="/admin/teaching_zj">
+
+							<i class="icon-cogs"></i>
+
+							安吉拉早教</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-briefcase"></i> 
+
+					<span class="title">安吉拉文化</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="/admin/education_concept">
+
+							<i class="icon-cogs"></i>
+
+							安吉拉教育理念</a>
+
+						</li>
 
 						<li >
 
@@ -307,17 +293,39 @@
 
 							<i class="icon-cogs"></i>
 
-							PC端匠几文化</a>
+							安吉拉文化</a>
+
+						</li>
+
+						<li>
+
+							<a href="javascript:;">
+
+							<span class="icon-cogs"></span>
+
+							我们的团队
+
+							<span class="arrow"></span>
+
+							</a>
+
+							<ul class="sub-menu">
+
+								<li><a href="/admin/education_team">图文简介</a></li>
+
+								<li><a href="/admin/education_teacher">教师简介</a></li>
+
+							</ul>
 
 						</li>
 
 						<li >
 
-							<a href="/admin/culture_mobile">
+							<a href="/admin/education_speak">
 
 							<i class="icon-cogs"></i>
 
-							移动端匠几文化</a>
+							安吉拉说</a>
 
 						</li>
 
@@ -331,7 +339,7 @@
 
 					<i class="icon-briefcase"></i> 
 
-					<span class="title">匠几服务</span>
+					<span class="title">园所动态</span>
 
 					<span class="arrow "></span>
 
@@ -341,11 +349,105 @@
 
 						<li >
 
-							<a href="/admin/service">
+							<a href="/admin/news_social">
 
 							<i class="icon-cogs"></i>
 
-							匠几服务</a>
+							社会活动</a>
+
+						</li>
+
+						<li >
+
+							<a href="/admin/news_festival">
+
+							<i class="icon-cogs"></i>
+
+							节日活动</a>
+
+						</li>
+
+						<li >
+
+							<a href="/admin/news_class">
+
+							<i class="icon-cogs"></i>
+
+							班级活动</a>
+
+						</li>
+
+						<li >
+
+							<a href="/admin/news_parents">
+
+							<i class="icon-cogs"></i>
+
+							父母沙龙</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+				
+				<li>
+
+					<a class="active" href="javascript:;">
+
+					<i class="icon-briefcase"></i> 
+
+					<span class="title">常青藤课程</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="javascript:;">
+
+							<span class="icon-cogs"></span>
+
+							理念基础
+
+							<span class="arrow"></span>
+
+							</a>
+
+							<ul class="sub-menu">
+
+								<li><a href="/admin/curriculum_idea/chart">图文理念</a></li>
+
+								<li><a href="/admin/curriculum_idea/paragraph">段落理念</a></li>
+
+							</ul>
+
+						</li>
+
+						<li>
+
+							<a href="javascript:;">
+
+							<span class="icon-cogs"></span>
+
+							协商式课程
+
+							<span class="arrow"></span>
+
+							</a>
+
+							<ul class="sub-menu">
+
+								<li><a href="/admin/consultative_course/text">模块简介</a></li>
+
+								<li><a href="/admin/consultative_course/paragraph">段落简介</a></li>
+
+								<li><a href="/admin/consultative_course/image_text">图文展示</a></li>
+
+							</ul>
 
 						</li>
 
@@ -359,7 +461,7 @@
 
 					<i class="icon-briefcase"></i> 
 
-					<span class="title">品牌案例</span>
+					<span class="title">关于我们</span>
 
 					<span class="arrow "></span>
 
@@ -367,13 +469,79 @@
 
 					<ul class="sub-menu">
 
+						<li>
+
+							<a href="javascript:;">
+
+							<span class="icon-cogs"></span>
+
+							关于安吉拉
+
+							<span class="arrow"></span>
+
+							</a>
+
+							<ul class="sub-menu">
+
+								<li><a href="/admin/about_us">文本简介</a></li>
+
+								<li><a href="/admin/about_us_pic">图片轮播</a></li>
+
+							</ul>
+
+						</li>
+
+						<li>
+
+							<a href="javascript:;">
+
+							<span class="icon-cogs"></span>
+
+							发展历程
+
+							<span class="arrow"></span>
+
+							</a>
+
+							<ul class="sub-menu">
+
+								<li><a href="/admin/development_text">文本简介</a></li>
+
+								<li><a href="/admin/development_timer_shaft">时间轴</a></li>
+
+							</ul>
+
+						</li>
+
+						<li>
+
+							<a href="javascript:;">
+
+							<span class="icon-cogs"></span>
+
+							管理团队
+
+							<span class="arrow"></span>
+
+							</a>
+
+							<ul class="sub-menu">
+
+								<li><a href="/admin/manage_team_text">管理团队文本</a></li>
+
+								<li><a href="/admin/manage_team">团队展示</a></li>
+
+							</ul>
+
+						</li>
+
 						<li >
 
-							<a href="/admin/case">
+							<a href="/admin/kindergarten">
 
 							<i class="icon-cogs"></i>
 
-							品牌案例</a>
+							园所分部</a>
 
 						</li>
 
@@ -381,71 +549,9 @@
 
 				</li>
 
-				<li class="">
 
-					<a href="javascript:;">
 
-					<i class="icon-briefcase"></i> 
 
-					<span class="title">配套采购</span>
-
-					<span class="arrow "></span>
-
-					</a>
-
-					<ul class="sub-menu">
-
-						<li >
-
-							<a href="/admin/purchase">
-
-							<i class="icon-cogs"></i>
-
-							PC端配套采购</a>
-
-						</li>
-
-						<li >
-
-							<a href="/admin/purchase_mobile">
-
-							<i class="icon-cogs"></i>
-
-							移动端配套采购</a>
-
-						</li>
-
-					</ul>
-
-				</li>
-
-				<li class="">
-
-					<a href="javascript:;">
-
-					<i class="icon-briefcase"></i> 
-
-					<span class="title">匠几动态</span>
-
-					<span class="arrow "></span>
-
-					</a>
-
-					<ul class="sub-menu">
-
-						<li >
-
-							<a href="/admin/news">
-
-							<i class="icon-cogs"></i>
-
-							匠几动态</a>
-
-						</li>
-
-					</ul>
-
-				</li>
 
 			</ul>
 
