@@ -82,7 +82,7 @@ after('deploy', 'success');
 
 // Configuration
 set('writable_use_sudo', false);
-set('repository', 'git@git.coding.net:zzy932960056/anjila.git');
+set('repository', 'git@e.coding.net:zzy932960056/anjila.git');
 add('shared_files', []);
 add('shared_dirs', []);
 add('writable_dirs', []);
@@ -90,8 +90,8 @@ set('keep_releases', 3);
 // Servers
 
 server('production', 'www.jiangjimedia.com')
-    ->user('oipublish')
-    ->password('hyze@publish')
+    ->user('deployer')
+    ->password('Hyze@0416')
 //    ->identityFile()
     ->set('deploy_path', '/opt/hyze/anjila');
 
