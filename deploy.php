@@ -82,7 +82,7 @@ after('deploy', 'success');
 
 // Configuration
 set('writable_use_sudo', false);
-set('repository', 'git@e.coding.net:zzy932960056/anjila.git');
+set('repository', 'git@github.com:zzy932960056/anjila.git');
 add('shared_files', []);
 add('shared_dirs', []);
 add('writable_dirs', []);
